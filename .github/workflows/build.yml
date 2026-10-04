@@ -25,17 +25,18 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Get Dependencies and Build APK
+      - name: Get Dependencies
         run: |
-          # pubspec.yaml dosyasının bulunduğu klasörü bul
-          TARGET_DIR=$(dirname $(find . -name "pubspec.yaml" -not -path "*/.*" | head -n 1))
-          echo "Proje dizini bulundu: $TARGET_DIR"
-          cd "$TARGET_DIR"
+          cd Nk-Music-Box
           flutter pub get
+
+      - name: Build APK
+        run: |
+          cd Nk-Music-Box
           flutter build apk --release
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Nk-Music-Box-Release-APK
-          path: '**/build/app/outputs/flutter-apk/app-release.apk'
+          path: Nk-Music-Box/build/app/outputs/flutter-apk/app-release.apk
