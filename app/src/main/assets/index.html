@@ -13,6 +13,8 @@
       --text: #ffffff;
       --subtext: #a0a0ab;
       --border: #2a2a35;
+      --spotify-green: #1DB954;
+      --youtube-red: #FF0000;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background-color: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 16px; padding-bottom: 80px; }
@@ -38,20 +40,33 @@
     .song-year { font-size: 11px; color: var(--accent-gold); }
 
     .song-actions { display: flex; align-items: center; gap: 6px; }
-    .btn-dinle {
-      background: linear-gradient(135deg, #9D4EDD, #FFB703);
-      color: #121212;
+    
+    .btn-spotify {
+      background: var(--spotify-green);
+      color: #000000;
       font-weight: bold;
       border: none;
-      padding: 6px 14px;
-      border-radius: 6px;
+      padding: 8px 12px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 12px;
       display: flex;
       align-items: center;
       gap: 4px;
     }
-    .btn-sec { background: #2a2a35; border: none; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; }
+    .btn-youtube {
+      background: #2a2a35;
+      color: #ffffff;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-youtube:hover { border-color: var(--youtube-red); }
   </style>
 </head>
 <body>
@@ -91,7 +106,6 @@
     let jsonData = null;
     let currentKey = 'yerli_pop';
 
-    // JSON Verisini Oku (muzik_dolabi.json)
     fetch('muzik_dolabi.json')
       .then(response => response.json())
       .then(data => {
@@ -152,7 +166,8 @@
             <div class="song-artist">${song.sanatci} ${song.yil ? `<span class="song-year">(${song.yil})</span>` : ''}</div>
           </div>
           <div class="song-actions">
-            <button class="btn-dinle" onclick="sarkiCal('${song.sanatci}', '${song.ad}')">▶ DİNLE</button>
+            <button class="btn-spotify" onclick="openSpotify('${song.sanatci}', '${song.ad}')">🎧 Spotify</button>
+            <button class="btn-youtube" onclick="openYouTube('${song.sanatci}', '${song.ad}')">▶ YouTube</button>
           </div>
         `;
         container.appendChild(card);
@@ -184,13 +199,18 @@
       renderSongs(results);
     }
 
-    function sarkiCal(sanatci, sarki) {
-      if (window.AndroidInterface && window.AndroidInterface.playSong) {
-        window.AndroidInterface.playSong(sanatci, sarki, "", "");
-      } else {
-        const query = encodeURIComponent(sanatci + " " + sarki);
-        window.open("https://www.youtube.com/results?search_query=" + query, "_blank");
-      }
+    // Spotify Web Arama Yönlendirmesi (Spotify Uygulaması Olmasa da Çalışır)
+    function openSpotify(sanatci, sarki) {
+      const query = encodeURIComponent(sanatci + " " + sarki);
+      const spotifyWebUrl = "https://open.spotify.com/search/" + query;
+      window.open(spotifyWebUrl, "_blank");
+    }
+
+    // YouTube Arama Yönlendirmesi
+    function openYouTube(sanatci, sarki) {
+      const query = encodeURIComponent(sanatci + " " + sarki);
+      const youtubeWebUrl = "https://www.youtube.com/results?search_query=" + query;
+      window.open(youtubeWebUrl, "_blank");
     }
   </script>
 </body>
