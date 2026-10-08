@@ -1,0 +1,38 @@
+{
+  "last_updated": "2026-10-08T12:00:00Z",
+  "categories": [
+    {
+      "id": "cat_yerli_pop",
+      "name": "1. Grup: Yerli Pop",
+      "category_cover": "https://raw.githubusercontent.com/nmnkrcgl/Nk-Music-Box/main/covers/yerli_pop.jpg",
+      "playlists": [
+        {
+          "id": "yerli_90lar",
+          "title": "90'lar Best Şarkılar",
+          "cover_url": "https://raw.githubusercontent.com/nmnkrcgl/Nk-Music-Box/main/covers/90lar_pop.jpg",
+          "stream_url": "https://ornek-sunucu.com/stream/90lar.m3u8"
+        }
+      ]
+    },
+    {
+      "id": "cat_kafa_sarkilar",
+      "name": "3. Grup: Kafa Şarkılar",
+      "category_cover": "https://raw.githubusercontent.com/nmnkrcgl/Nk-Music-Box/main/covers/kafa_sarkilar.jpg",
+      "playlists": [
+        {
+          "id": "tas_plaklar",
+          "title": "Taş Plaklar & Nostalji",
+          "cover_url": "https://raw.githubusercontent.com/nmnkrcgl/Nk-Music-Box/main/covers/nostalji.jpg",
+          "tracks": [
+            {
+              "title": "Örnek Nostalji Şarkısı",
+              "artist": "Sanatçı Adı",
+              "cover_url": "https://raw.githubusercontent.com/nmnkrcgl/Nk-Music-Box/main/covers/sarki_kapak.jpg",
+              "url": "https://ornek-sunucu.com/sarki.mp3"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
