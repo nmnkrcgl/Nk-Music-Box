@@ -1,186 +1,46 @@
 <!DOCTYPE html>
-<html lang="tr"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>NK music box</title>
-<meta name="theme-color" content="#2a1740">
-<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#f3eff4;--card:#fff;--tx:#201826;--mu:#6b6175;--ln:#ddd3e3;--g1:#c8325f;--g2:#2f6fe0;--g3:#b9780a;--g4:#16897a;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17121c;--card:#221b29;--tx:#f1ebf5;--mu:#a398ae;--ln:#372d40;--g1:#ff6b94;--g2:#6c9dff;--g3:#f0b23e;--g4:#3fd2bd}}
-:root[data-theme=dark]{--bg:#17121c;--card:#221b29;--tx:#f1ebf5;--mu:#a398ae;--ln:#372d40;--g1:#ff6b94;--g2:#6c9dff;--g3:#f0b23e;--g4:#3fd2bd}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-.w{max-width:880px;margin:0 auto;padding:18px 14px 60px}
-h1{font:700 28px/1.1 Georgia,"Times New Roman",serif;margin:0;display:flex;align-items:center;gap:12px}
-.disc{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle,var(--bg) 0 14%,var(--tx) 15% 18%,transparent 19%),repeating-radial-gradient(circle,#222 0 2px,#333 2px 4px);flex:none;animation:sp 6s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.disc{animation:none}}
-.sub{color:var(--mu);margin:4px 0 14px}
-.nav{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
-button,input,select{font:inherit;color:inherit}
-button{cursor:pointer}
-.tab{border:1px solid var(--ln);background:var(--card);padding:8px 14px;border-radius:20px}
-.tab[aria-pressed=true]{background:var(--tx);color:var(--bg);border-color:var(--tx)}
-:focus-visible{outline:2px solid var(--g2);outline-offset:2px}
-.groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-bottom:10px}
-.g{border:2px solid var(--ln);background:var(--card);border-radius:10px;padding:10px 12px;text-align:left}
-.g b{display:block;font:700 15px Georgia,serif}.g small{color:var(--mu)}
-.g[aria-pressed=true]{border-color:var(--c);box-shadow:inset 5px 0 0 var(--c)}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
-.chip{border:1px solid var(--ln);background:none;border-radius:14px;padding:3px 11px;font-size:13px}
-.chip[aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff}
-.bar{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
-input,select{background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:8px 10px;min-width:0}
-.bar input{flex:1;min-width:150px}
-ul{list-style:none;margin:0;padding:0}
-li.s{display:flex;align-items:center;gap:10px;background:var(--card);border-left:5px solid var(--c);border-radius:8px;padding:9px 10px;margin-bottom:6px}
-.i{flex:1;min-width:0}.i b{display:block;overflow-wrap:anywhere}.i span{color:var(--mu);font-size:13px}
-.a{display:flex;gap:4px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
-.a a,.a button{border:1px solid var(--ln);background:none;border-radius:7px;padding:4px 8px;font-size:12px;text-decoration:none;color:var(--tx)}
-.a .h{font-size:17px;border:0;padding:2px 6px}
-.a .h.on{color:var(--g1)}
-.card{background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:12px;margin-bottom:12px}
-.card h2{font:700 18px Georgia,serif;margin:0 0 8px}
-.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
-.p{background:var(--tx);color:var(--bg);border:0;border-radius:8px;padding:8px 14px}
-.mu{color:var(--mu)}
-.empty{padding:18px;border:1px dashed var(--ln);border-radius:10px;color:var(--mu);text-align:center}
-.note{font-size:13px;color:var(--mu);margin-top:20px}
-body{font-family:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif}
-h1,.card h2,.g b,.yr,.yt{font-family:Fraunces,Georgia,serif}
-h1{font-size:28px;font-weight:800;letter-spacing:-.5px}
-.w{padding-bottom:100px}
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:5;margin:0;gap:0;flex-wrap:nowrap;background:var(--card);border-top:1px solid var(--ln);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px))}
-.tab{flex:1;border:0;background:none;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:12px;font-weight:600;padding:6px 2px;color:var(--mu)}
-.tab span{font-size:20px;line-height:1.2}
-.tab[aria-pressed=true]{background:none;color:var(--g1)}
-.yr{font-size:24px;font-weight:800;margin:18px 0 6px}.yt{font-size:18px;margin:6px 0}
-textarea{width:100%;background:var(--card);border:1px solid var(--ln);border-radius:8px;padding:8px;color:inherit;font:12px/1.4 monospace}
-</style></head><body><div class="w">
-<h1><svg viewBox="0 0 64 64" width="46" height="46" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b94"/><stop offset="1" stop-color="#4a2380"/></linearGradient></defs><rect width="64" height="64" rx="15" fill="url(#lg)"/><circle cx="32" cy="27" r="16" fill="#15101a"/><circle cx="32" cy="27" r="12" fill="none" stroke="#fff" stroke-opacity=".25"/><circle cx="32" cy="27" r="8.5" fill="none" stroke="#fff" stroke-opacity=".2"/><circle cx="32" cy="27" r="5" fill="#f0b23e"/><circle cx="32" cy="27" r="1.3" fill="#15101a"/><rect x="13" y="37" width="38" height="17" rx="3.5" fill="#f3e9f7"/><rect x="26" y="43" width="12" height="4" rx="2" fill="#4a2380"/></svg>NK music box</h1>
-<p class="sub">Senin 4 grubun, senin listelerin. Şarkıya dokun, Spotify veya YouTube'da aç.</p>
-<div class="nav" id="nav"></div>
-<div id="app"></div>
-<p class="note">Yıllar ve eşleşmeler büyük ölçüde doğrudur ama hatalı olabilir; yanlışı silip kendi doğrunu ekleyebilirsin. Verilerin bu tarayıcıda saklanır.</p>
-</div>
-<script>
-const G=[
-{id:1,n:"Yerli Pop",d:"80'ler · 90'lar · günümüz",c:"var(--g1)",subs:["80'ler","90'lar","2000+"]},
-{id:2,n:"Yabancı Pop",d:"80'ler · 90'lar · günümüz",c:"var(--g2)",subs:["80'ler","90'lar","2000+"]},
-{id:3,n:"Kafa Şarkılar",d:"Sanat müziği · 45'likler · taş plak",c:"var(--g3)",subs:["Türk Sanat Müziği","45'lik","Taş Plak"]},
-{id:4,n:"Dinlemelik",d:"Afro · blues · caz",c:"var(--g4)",subs:["Afro","Blues","Blues-Caz","Caz"]}];
-const BUILTIN={"versiyon":1,"son_guncelleme":"2026-10-04","sekmeler":{"yerli_pop":[{"yil":"1981","sarkilar":[{"ad":"Gibi Gibi","sanatci":"Barış Manço"},{"ad":"Gül Pembe","sanatci":"Barış Manço"}]},{"yil":"1984","sarkilar":[{"ad":"Sen Ağlama","sanatci":"Sezen Aksu"}]},{"yil":"1985","sarkilar":[{"ad":"Ele Güne Karşı","sanatci":"MFÖ"},{"ad":"Bambaşka Biri","sanatci":"Ajda Pekkan"},{"ad":"Kaçın Kurası","sanatci":"Sezen Aksu"}]},{"yil":"1991","sarkilar":[{"ad":"Firuze","sanatci":"Sezen Aksu"},{"ad":"Gülümse","sanatci":"Sezen Aksu"}]},{"yil":"1992","sarkilar":[{"ad":"Abone","sanatci":"Yonca Evcimik"}]},{"yil":"1996","sarkilar":[{"ad":"Tutamıyorum Zamanı","sanatci":"Kenan Doğulu"}]},{"yil":"1997","sarkilar":[{"ad":"Şımarık","sanatci":"Tarkan"},{"ad":"Hepsi Senin mi?","sanatci":"Tarkan"}]},{"yil":"1998","sarkilar":[{"ad":"Araba","sanatci":"Mustafa Sandal"}]},{"yil":"1999","sarkilar":[{"ad":"Sakin Ol","sanatci":"Sertab Erener"}]},{"yil":"2001","sarkilar":[{"ad":"Kuzu Kuzu","sanatci":"Tarkan"}]},{"yil":"2003","sarkilar":[{"ad":"Everyway That I Can","sanatci":"Sertab Erener"},{"ad":"Dudu","sanatci":"Tarkan"}]},{"yil":"2004","sarkilar":[{"ad":"Be Adam","sanatci":"Gülşen"}]},{"yil":"2009","sarkilar":[{"ad":"Düm Tek Tek","sanatci":"Hadise"}]},{"yil":"2013","sarkilar":[{"ad":"Karaböcek","sanatci":"Mabel Matiz"}]},{"yil":"80'ler","sarkilar":[{"ad":"Yakar Geçerim Dünyayı","sanatci":"Ajda Pekkan"}]}],"yabanci_pop":[{"yil":"1982","sarkilar":[{"ad":"Hungry Like the Wolf","sanatci":"Duran Duran"}]},{"yil":"1983","sarkilar":[{"ad":"Billie Jean","sanatci":"Michael Jackson"},{"ad":"Thriller","sanatci":"Michael Jackson"},{"ad":"Girls Just Want to Have Fun","sanatci":"Cyndi Lauper"},{"ad":"Sweet Dreams","sanatci":"Eurythmics"},{"ad":"Total Eclipse of the Heart","sanatci":"Bonnie Tyler"}]},{"yil":"1984","sarkilar":[{"ad":"I Want to Break Free","sanatci":"Queen"},{"ad":"Purple Rain","sanatci":"Prince"},{"ad":"Last Christmas","sanatci":"Wham!"},{"ad":"Material Girl","sanatci":"Madonna"}]},{"yil":"1985","sarkilar":[{"ad":"Take On Me","sanatci":"a-ha"},{"ad":"You're My Heart, You're My Soul","sanatci":"Modern Talking"}]},{"yil":"1987","sarkilar":[{"ad":"I Wanna Dance with Somebody","sanatci":"Whitney Houston"}]},{"yil":"1989","sarkilar":[{"ad":"Like a Prayer","sanatci":"Madonna"}]},{"yil":"1990","sarkilar":[{"ad":"It Must Have Been Love","sanatci":"Roxette"}]},{"yil":"1991","sarkilar":[{"ad":"Smells Like Teen Spirit","sanatci":"Nirvana"},{"ad":"Black or White","sanatci":"Michael Jackson"}]},{"yil":"1992","sarkilar":[{"ad":"I Will Always Love You","sanatci":"Whitney Houston"},{"ad":"Creep","sanatci":"Radiohead"}]},{"yil":"1993","sarkilar":[{"ad":"The Sign","sanatci":"Ace of Base"}]},{"yil":"1995","sarkilar":[{"ad":"Back for Good","sanatci":"Take That"},{"ad":"Wonderwall","sanatci":"Oasis"},{"ad":"Fantasy","sanatci":"Mariah Carey"},{"ad":"Gangsta's Paradise","sanatci":"Coolio"}]},{"yil":"1996","sarkilar":[{"ad":"Wannabe","sanatci":"Spice Girls"},{"ad":"Ironic","sanatci":"Alanis Morissette"}]},{"yil":"1997","sarkilar":[{"ad":"My Heart Will Go On","sanatci":"Céline Dion"},{"ad":"Angels","sanatci":"Robbie Williams"}]},{"yil":"1999","sarkilar":[{"ad":"I Want It That Way","sanatci":"Backstreet Boys"},{"ad":"No Scrubs","sanatci":"TLC"}]},{"yil":"2000","sarkilar":[{"ad":"Yellow","sanatci":"Coldplay"}]},{"yil":"2003","sarkilar":[{"ad":"Toxic","sanatci":"Britney Spears"},{"ad":"Crazy in Love","sanatci":"Beyoncé"}]},{"yil":"2006","sarkilar":[{"ad":"Rehab","sanatci":"Amy Winehouse"}]},{"yil":"2007","sarkilar":[{"ad":"Umbrella","sanatci":"Rihanna"}]},{"yil":"2009","sarkilar":[{"ad":"Bad Romance","sanatci":"Lady Gaga"}]},{"yil":"2010","sarkilar":[{"ad":"Rolling in the Deep","sanatci":"Adele"}]},{"yil":"2011","sarkilar":[{"ad":"Somebody That I Used to Know","sanatci":"Gotye"}]},{"yil":"2013","sarkilar":[{"ad":"Get Lucky","sanatci":"Daft Punk"}]},{"yil":"2014","sarkilar":[{"ad":"Uptown Funk","sanatci":"Bruno Mars"},{"ad":"Shake It Off","sanatci":"Taylor Swift"}]},{"yil":"2015","sarkilar":[{"ad":"Hello","sanatci":"Adele"}]},{"yil":"2017","sarkilar":[{"ad":"Shape of You","sanatci":"Ed Sheeran"}]},{"yil":"2019","sarkilar":[{"ad":"Blinding Lights","sanatci":"The Weeknd"},{"ad":"bad guy","sanatci":"Billie Eilish"}]},{"yil":"2020","sarkilar":[{"ad":"Levitating","sanatci":"Dua Lipa"}]},{"yil":"2021","sarkilar":[{"ad":"drivers license","sanatci":"Olivia Rodrigo"}]},{"yil":"2022","sarkilar":[{"ad":"As It Was","sanatci":"Harry Styles"}]}],"kafa_sarkilar":[{"tur":"Türk Sanat Müziği","sarkilar":[{"ad":"Mehtaba Bak","sanatci":"Zeki Müren"},{"ad":"Elimde Değil","sanatci":"Zeki Müren"}]},{"tur":"45'lik","sarkilar":[{"ad":"Batsın Bu Dünya","sanatci":"Orhan Gencebay","yil":"1975"},{"ad":"Resimdeki Gözyaşları","sanatci":"Cem Karaca"},{"ad":"Gesi Bağları","sanatci":"Selda Bağcan"},{"ad":"Nilüfer","sanatci":"Müslüm Gürses"},{"ad":"Gönül Dağı","sanatci":"Neşet Ertaş"},{"ad":"Huzurum Kalmadı","sanatci":"Ferdi Tayfur"},{"ad":"Cemalim","sanatci":"Erkin Koray"}]},{"tur":"Taş Plak","sarkilar":[{"ad":"Telgrafın Tellerine","sanatci":"Safiye Ayla"},{"ad":"Gamzedeyim Deva Bulmam","sanatci":"Hamiyet Yüceses"}]}],"dinlemelik":[{"tur":"Afro","sarkilar":[{"ad":"Water No Get Enemy","sanatci":"Fela Kuti"},{"ad":"Savane","sanatci":"Ali Farka Touré"},{"ad":"Pata Pata","sanatci":"Miriam Makeba"},{"ad":"Amassakoul","sanatci":"Tinariwen"},{"ad":"Zombie","sanatci":"Fela Kuti","yil":"1976"},{"ad":"Grazing in the Grass","sanatci":"Hugh Masekela","yil":"1968"},{"ad":"Soul Makossa","sanatci":"Manu Dibango","yil":"1972"},{"ad":"Sodade","sanatci":"Cesária Évora","yil":"1992"},{"ad":"7 Seconds","sanatci":"Youssou N'Dour","yil":"1994"}]},{"tur":"Blues","sarkilar":[{"ad":"The Thrill Is Gone","sanatci":"B.B. King"},{"ad":"Hoochie Coochie Man","sanatci":"Muddy Waters"},{"ad":"Cross Road Blues","sanatci":"Robert Johnson"},{"ad":"Hound Dog","sanatci":"Big Mama Thornton","yil":"1953"},{"ad":"Smokestack Lightning","sanatci":"Howlin' Wolf","yil":"1956"},{"ad":"Boom Boom","sanatci":"John Lee Hooker","yil":"1962"},{"ad":"Born Under a Bad Sign","sanatci":"Albert King","yil":"1967"},{"ad":"Pride and Joy","sanatci":"Stevie Ray Vaughan","yil":"1983"}]},{"tur":"Blues-Caz","sarkilar":[{"ad":"Georgia on My Mind","sanatci":"Ray Charles"},{"ad":"Strange Fruit","sanatci":"Billie Holiday"},{"ad":"Feeling Good","sanatci":"Nina Simone"},{"ad":"St. Louis Blues","sanatci":"Bessie Smith","yil":"1925"},{"ad":"At Last","sanatci":"Etta James","yil":"1960"},{"ad":"I Put a Spell on You","sanatci":"Nina Simone","yil":"1965"},{"ad":"The Look of Love","sanatci":"Diana Krall","yil":"2001"},{"ad":"Don't Know Why","sanatci":"Norah Jones","yil":"2002"}]},{"tur":"Caz","sarkilar":[{"ad":"So What","sanatci":"Miles Davis"},{"ad":"Take Five","sanatci":"Dave Brubeck"},{"ad":"Giant Steps","sanatci":"John Coltrane"},{"ad":"What a Wonderful World","sanatci":"Louis Armstrong"},{"ad":"Take the \"A\" Train","sanatci":"Duke Ellington","yil":"1941"},{"ad":"'Round Midnight","sanatci":"Thelonious Monk","yil":"1944"},{"ad":"Ornithology","sanatci":"Charlie Parker","yil":"1946"},{"ad":"A Night in Tunisia","sanatci":"Dizzy Gillespie","yil":"1946"},{"ad":"My Funny Valentine","sanatci":"Chet Baker","yil":"1954"},{"ad":"Summertime","sanatci":"Ella Fitzgerald","yil":"1957"},{"ad":"Blue in Green","sanatci":"Miles Davis","yil":"1959"},{"ad":"Waltz for Debby","sanatci":"Bill Evans","yil":"1961"},{"ad":"Cantaloupe Island","sanatci":"Herbie Hancock","yil":"1964"},{"ad":"The Girl from Ipanema","sanatci":"Stan Getz","yil":"1964"},{"ad":"A Love Supreme","sanatci":"John Coltrane","yil":"1965"}]}]}};
-const VK="mdolabi_veri",UK="mdolabi_url";
-let D=BUILTIN;
-const okv=d=>d&&typeof d.versiyon==="number"&&d.sekmeler;
-const pick=d=>{if(okv(d)&&d.versiyon>D.versiyon)D=d};
-try{if(window.Android&&Android.veri)pick(JSON.parse(Android.veri()))}catch(e){}
-try{pick(JSON.parse(localStorage.getItem(VK)))}catch(e){}
-const dec=y=>+y<1990?"80'ler":+y<2000?"90'lar":"2000+";
-function flat(d){const o=[],T=d.sekmeler;
- [["yerli_pop",1],["yabanci_pop",2]].forEach(([k,g])=>(T[k]||[]).forEach(e=>{const n=/^\d{4}$/.test(e.yil);(e.sarkilar||[]).forEach(s=>o.push({g,sub:n?dec(e.yil):e.yil,a:s.sanatci,t:s.ad,y:n?e.yil:""}))}));
- [["kafa_sarkilar",3],["dinlemelik",4]].forEach(([k,g])=>(T[k]||[]).forEach(e=>(e.sarkilar||[]).forEach(s=>o.push({g,sub:e.tur,a:s.sanatci,t:s.ad,y:s.yil||""}))));
- return o.map(s=>({...s,id:"s:"+s.a+"|"+s.t}))}
-let S=flat(D);
-const setData=d=>{D=d;S=flat(D)};
-async function guncelle(){
- const u=(localStorage.getItem(UK)||"").trim();if(!u){st.msg2="Önce veri adresini gir.";render();return}
- try{const c=new AbortController();setTimeout(()=>c.abort(),8000);
-  const d=await(await fetch(u,{signal:c.signal,cache:"no-store"})).json();if(!okv(d))throw 0;
-  if(d.versiyon>D.versiyon){setData(d);localStorage.setItem(VK,JSON.stringify(d));st.msg2="Güncellendi: sürüm "+d.versiyon}
-  else st.msg2="Liste güncel (sürüm "+D.versiyon+")"
- }catch(e){st.msg2="Sunucuya ulaşılamadı; mevcut liste kullanılıyor."}
- render()}
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NK Music Box</title>
+  <style>
+    body { background-color: #121212; color: #fff; font-family: sans-serif; padding: 15px; }
+    .song-card { background: #1e1e1e; padding: 12px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .song-title { font-weight: bold; font-size: 16px; }
+    .song-artist { font-size: 13px; color: #aaa; }
+    .btn-dinle { background: linear-gradient(135deg, #9D4EDD, #FFB703); color: #121212; font-weight: bold; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+    .btn-spotify, .btn-youtube { background: #282828; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; margin-left: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
 
-let st={tab:"k",g:1,sub:"",q:"",pl:"",rec:[]};
-let L={favs:[],mine:[],lists:{}};
-try{const x=localStorage.getItem("mdolabi");if(x)L=JSON.parse(x)}catch(e){}
-const save=()=>{try{localStorage.setItem("mdolabi",JSON.stringify(L))}catch(e){}};
-const all=()=>S.concat(L.mine);
-const byId=id=>all().find(s=>s.id===id);
-const gc=g=>G.find(x=>x.id==g).c;
-const E=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const q=s=>encodeURIComponent(s.a+" "+s.t);
+  <h2>NK Music Box</h2>
 
-function row(s){
- const fav=L.favs.includes(s.id),own=s.id[0]==="m";
- return `<li class="s" style="--c:${gc(s.g)}"><div class="i"><b>${E(s.t)}</b><span>${E(s.a)}${s.y?" · "+s.y:""} · ${E(s.sub)}</span></div>
- <div class="a"><button class="h ${fav?"on":""}" data-act="fav" data-id="${s.id}" aria-label="Kütüphaneme ekle/çıkar" aria-pressed="${fav}">${fav?"♥":"♡"}</button>
- <select data-act="addl" data-id="${s.id}" aria-label="Listeye ekle"><option value="">+ Liste</option>${Object.keys(L.lists).map(n=>`<option>${E(n)}</option>`).join("")}</select>
- <a href="https://open.spotify.com/search/${q(s)}" target="_blank" rel="noopener">Spotify</a>
- <a href="https://www.youtube.com/results?search_query=${q(s)}" target="_blank" rel="noopener">YouTube</a>
- ${own?`<button data-act="del" data-id="${s.id}" aria-label="Sil">Sil</button>`:""}</div></li>`}
-const list=a=>a.length?`<ul>${a.map(row).join("")}</ul>`:`<div class="empty">Burada henüz şarkı yok.</div>`;
+  <div id="song-list">
+    <!-- Örnek Şarkı Kartı -->
+    <div class="song-card">
+      <div>
+        <div class="song-title">Mehtaba Bak</div>
+        <div class="song-artist">Zeki Müren</div>
+      </div>
+      <div>
+        <button class="btn-dinle" onclick="sarkiCal('Zeki Müren', 'Mehtaba Bak')">▶ DİNLE</button>
+        <button class="btn-spotify" onclick="sarkiCal('Zeki Müren', 'Mehtaba Bak')">Spotify</button>
+        <button class="btn-youtube" onclick="sarkiCal('Zeki Müren', 'Mehtaba Bak')">YouTube</button>
+      </div>
+    </div>
+  </div>
 
-function browse(){
- const g=G.find(x=>x.id==st.g);
- let a=all().filter(s=>s.g==st.g&&(!st.sub||s.sub===st.sub));
- const qq=st.q.toLowerCase();
- if(qq)a=all().filter(s=>(s.a+" "+s.t).toLowerCase().includes(qq));
- return `<div class="groups">${G.map(x=>`<button class="g" style="--c:${x.c}" data-act="grp" data-id="${x.id}" aria-pressed="${x.id==st.g&&!qq}"><b>${x.id}. ${x.n}</b><small>${x.d}</small></button>`).join("")}</div>
- <div class="chips" style="--c:${g.c}"><button class="chip" data-act="sub" data-id="" aria-pressed="${!st.sub}">Hepsi</button>${g.subs.map(x=>`<button class="chip" data-act="sub" data-id="${E(x)}" aria-pressed="${st.sub===x}">${E(x)}</button>`).join("")}</div>
- <div class="bar"><input id="qi" type="search" placeholder="Tüm gruplarda ara: sanatçı veya şarkı" value="${E(st.q)}" aria-label="Ara"></div>${list(a)}`}
-
-function mylib(){
- const lists=Object.keys(L.lists);
- let body;
- if(st.pl){body=`<h2>${E(st.pl)}</h2>`+list((L.lists[st.pl]||[]).map(byId).filter(Boolean))+`<div class="bar" style="margin-top:10px"><button class="chip" data-act="back">Geri</button><button class="chip" data-act="dell">Listeyi sil</button></div>`}
- else body=`<h2>Sevdiklerim (${L.favs.length})</h2>`+list(L.favs.map(byId).filter(Boolean));
- return `<div class="card"><h2>Listelerim</h2><div class="chips" style="--c:var(--g4)"><button class="chip" data-act="open" data-id="" aria-pressed="${!st.pl}">♥ Sevdiklerim</button>${lists.map(n=>`<button class="chip" data-act="open" data-id="${E(n)}" aria-pressed="${st.pl===n}">${E(n)} (${L.lists[n].length})</button>`).join("")}</div>
- <div class="bar"><input id="ln" placeholder="Yeni liste adı (ör. Pazar sabahı)" aria-label="Liste adı"><button class="p" data-act="newl">Liste oluştur</button></div></div>
- <div class="card"><h2>Kendi şarkını ekle</h2><div class="form"><input id="fa" placeholder="Sanatçı"><input id="ft" placeholder="Şarkı"><input id="fy" placeholder="Yıl (isteğe bağlı)" inputmode="numeric">
- <select id="fg">${G.map(x=>`<option value="${x.id}">${x.id}. ${x.n}</option>`).join("")}</select><select id="fs"></select><button class="p" data-act="add">Kütüphaneye ekle</button></div></div>
- <div class="card"><h2>Liste güncelleme</h2><p class="mu" style="margin:0 0 8px">Liste sürümü ${D.versiyon} · ${E(D.son_guncelleme||"")}. ${window.Android?"Uygulama güncellemeyi kendi denetler; yeni liste bir sonraki açılışta gelir.":"Kendi sunucundaki muzik_dolabi.json adresini gir."}</p>${window.Android?"":`<div class="bar"><input id="ui" type="url" placeholder="https://siteniz.com/muzik_dolabi.json" value="${E(localStorage.getItem(UK)||"")}" aria-label="Veri adresi"><button class="p" data-act="upd">Güncellemeyi denetle</button></div>`}<div class="mu">${st.msg2||""}</div></div>
- <div class="card"><h2>Yedekle / geri yükle</h2><p class="mu" style="margin:0 0 8px">Yedeği hazırla, kopyalayıp sakla; yeni cihazda buraya yapıştırıp geri yükle.</p><textarea id="bk" rows="3" placeholder="Yedek kodu burada görünür veya buraya yapıştır">${E(st.bk||"")}</textarea><div class="bar"><button class="p" data-act="exp">Yedeği hazırla ve kopyala</button><button class="chip" data-act="imp">Geri yükle</button></div><div class="mu">${st.msg||""}</div></div>${body}`}
-
-function sug(){
- const n=new Set(L.favs.map(id=>byId(id)?.g)),pool=S.filter(s=>!L.favs.includes(s.id));
- return pool.sort(()=>Math.random()-.5).sort((a,b)=>(n.has(b.g)?1:0)-(n.has(a.g)?1:0)).slice(0,6)}
-function rec(){
- if(!st.rec.length)st.rec=sug().map(s=>s.id);
- return `<div class="card"><h2>Bugünün önerileri</h2><p class="mu" style="margin:0 0 8px">Sevdiğin gruplara öncelik verilir. Beğendiğini ♡ ile kütüphaneye al.</p>
- <button class="p" data-act="shuf">Yeni öneriler getir</button></div>${list(st.rec.map(byId).filter(Boolean))}
- <div class="card"><h2>Kendi önerini kaydet</h2><p class="mu" style="margin:0">Arkadaştan duyduğun ya da keşfettiğin şarkıyı "Kütüphanem" sekmesinden ekle; gruba göre listelenir.</p></div>`}
-
-const gr=()=>`<div class="groups">${G.map(x=>`<button class="g" style="--c:${x.c}" data-act="grp" data-id="${x.id}" aria-pressed="${x.id==st.g}"><b>${x.id}. ${x.n}</b><small>${x.d}</small></button>`).join("")}</div>`;
-function years(){const a=all().filter(s=>s.g==st.g&&s.y).sort((x,y)=>y.y-x.y);const ys=[...new Set(a.map(s=>s.y))];
- return gr()+`<h2 class="yt">Yıl yıl seçmeler</h2>`+(ys.length?ys.map(y=>`<h3 class="yr">${y}</h3>`+list(a.filter(s=>s.y==y))).join(""):`<div class="empty">Bu grupta yılı girilmiş şarkı yok.</div>`)}
-const T=[["k","🔎","Keşfet"],["y","📅","Yıllar"],["l","💿","Kütüphane"],["o","✨","Öneri"]];
-function render(){
- nav.innerHTML=T.map(([k,i,n])=>`<button class="tab" data-act="tab" data-id="${k}" aria-pressed="${st.tab===k}"><span aria-hidden="true">${i}</span>${n}</button>`).join("");
- app.innerHTML=st.tab==="k"?browse():st.tab==="y"?years():st.tab==="l"?mylib():rec();
- const fg=document.getElementById("fg");
- if(fg){const f=()=>{document.getElementById("fs").innerHTML=G.find(x=>x.id==fg.value).subs.map(x=>`<option>${E(x)}</option>`).join("")};fg.onchange=f;f()}
- const qi=document.getElementById("qi");
- if(qi)qi.oninput=e=>{st.q=e.target.value;const p=e.target.selectionStart;render();const n=document.getElementById("qi");n.focus();n.setSelectionRange(p,p)}}
-
-try{navigator.serviceWorker.register('sw.js').catch(()=>{})}catch(e){}
-document.addEventListener("click",e=>{
- const b=e.target.closest("[data-act]");if(!b||b.tagName==="SELECT")return;
- const a=b.dataset.act,id=b.dataset.id;
- if(a==="tab")st.tab=id;
- if(a==="grp"){st.g=+id;st.sub="";st.q=""}
- if(a==="sub")st.sub=id;
- if(a==="fav"){const i=L.favs.indexOf(id);i<0?L.favs.push(id):L.favs.splice(i,1);save()}
- if(a==="del"){L.mine=L.mine.filter(s=>s.id!==id);L.favs=L.favs.filter(x=>x!==id);for(const k in L.lists)L.lists[k]=L.lists[k].filter(x=>x!==id);save()}
- if(a==="open")st.pl=id;
- if(a==="back")st.pl="";
- if(a==="dell"){delete L.lists[st.pl];st.pl="";save()}
- if(a==="newl"){const v=ln.value.trim();if(v&&!L.lists[v]){L.lists[v]=[];st.pl=v;save()}}
- if(a==="shuf")st.rec=[];
- if(a==="upd"){try{localStorage.setItem(UK,ui.value.trim())}catch(e){}guncelle()}
- if(a==="exp"){st.bk=JSON.stringify(L);st.msg="Hazır. Kopyalamayı denedim; olmazsa metni seçip kopyala.";try{navigator.clipboard.writeText(st.bk)}catch(e){}}
- if(a==="imp"){try{const d=JSON.parse(bk.value);if(!Array.isArray(d.favs)||!Array.isArray(d.mine)||typeof d.lists!=="object")throw 0;L={favs:d.favs,mine:d.mine,lists:d.lists};save();st.bk="";st.msg="Geri yüklendi."}catch(e){st.bk=bk.value;st.msg="Yedek kodu geçersiz."}}
- if(a==="add"){const A=fa.value.trim(),Tt=ft.value.trim();if(!A||!Tt){fa.focus();return}
-  const s={id:"m"+Date.now(),g:+fg.value,sub:fs.value,a:A,t:Tt,y:fy.value.trim()};L.mine.push(s);L.favs.push(s.id);save();st.g=s.g;st.sub="";st.tab="k"}
- render()});
-document.addEventListener("change",e=>{
- const s=e.target;if(s.dataset.act!=="addl"||!s.value)return;
- const l=L.lists[s.value];if(l&&!l.includes(s.dataset.id)){l.push(s.dataset.id);save()}render()});
-render();
-try{if(!window.Android&&localStorage.getItem(UK))guncelle()}catch(e){}
-</script></body></html>
+  <script>
+    function sarkiCal(sanatci, sarki) {
+      if (window.AndroidInterface && window.AndroidInterface.playSong) {
+        window.AndroidInterface.playSong(sanatci, sarki, "", "");
+      } else {
+        const query = encodeURIComponent(sanatci + " " + sarki);
+        window.open("https://www.youtube.com/results?search_query=" + query, "_blank");
+      }
+    }
+  </script>
+</body>
+</html>
