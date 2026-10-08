@@ -1,0 +1,776 @@
+{
+ "versiyon": 1,
+ "son_guncelleme": "2026-10-04",
+ "sekmeler": {
+  "yerli_pop": [
+   {
+    "yil": "1981",
+    "sarkilar": [
+     {
+      "ad": "Gibi Gibi",
+      "sanatci": "Barış Manço"
+     },
+     {
+      "ad": "Gül Pembe",
+      "sanatci": "Barış Manço"
+     }
+    ]
+   },
+   {
+    "yil": "1984",
+    "sarkilar": [
+     {
+      "ad": "Sen Ağlama",
+      "sanatci": "Sezen Aksu"
+     }
+    ]
+   },
+   {
+    "yil": "1985",
+    "sarkilar": [
+     {
+      "ad": "Ele Güne Karşı",
+      "sanatci": "MFÖ"
+     },
+     {
+      "ad": "Bambaşka Biri",
+      "sanatci": "Ajda Pekkan"
+     },
+     {
+      "ad": "Kaçın Kurası",
+      "sanatci": "Sezen Aksu"
+     }
+    ]
+   },
+   {
+    "yil": "1991",
+    "sarkilar": [
+     {
+      "ad": "Firuze",
+      "sanatci": "Sezen Aksu"
+     },
+     {
+      "ad": "Gülümse",
+      "sanatci": "Sezen Aksu"
+     }
+    ]
+   },
+   {
+    "yil": "1992",
+    "sarkilar": [
+     {
+      "ad": "Abone",
+      "sanatci": "Yonca Evcimik"
+     }
+    ]
+   },
+   {
+    "yil": "1996",
+    "sarkilar": [
+     {
+      "ad": "Tutamıyorum Zamanı",
+      "sanatci": "Kenan Doğulu"
+     }
+    ]
+   },
+   {
+    "yil": "1997",
+    "sarkilar": [
+     {
+      "ad": "Şımarık",
+      "sanatci": "Tarkan"
+     },
+     {
+      "ad": "Hepsi Senin mi?",
+      "sanatci": "Tarkan"
+     }
+    ]
+   },
+   {
+    "yil": "1998",
+    "sarkilar": [
+     {
+      "ad": "Araba",
+      "sanatci": "Mustafa Sandal"
+     }
+    ]
+   },
+   {
+    "yil": "1999",
+    "sarkilar": [
+     {
+      "ad": "Sakin Ol",
+      "sanatci": "Sertab Erener"
+     }
+    ]
+   },
+   {
+    "yil": "2001",
+    "sarkilar": [
+     {
+      "ad": "Kuzu Kuzu",
+      "sanatci": "Tarkan"
+     }
+    ]
+   },
+   {
+    "yil": "2003",
+    "sarkilar": [
+     {
+      "ad": "Everyway That I Can",
+      "sanatci": "Sertab Erener"
+     },
+     {
+      "ad": "Dudu",
+      "sanatci": "Tarkan"
+     }
+    ]
+   },
+   {
+    "yil": "2004",
+    "sarkilar": [
+     {
+      "ad": "Be Adam",
+      "sanatci": "Gülşen"
+     }
+    ]
+   },
+   {
+    "yil": "2009",
+    "sarkilar": [
+     {
+      "ad": "Düm Tek Tek",
+      "sanatci": "Hadise"
+     }
+    ]
+   },
+   {
+    "yil": "2013",
+    "sarkilar": [
+     {
+      "ad": "Karaböcek",
+      "sanatci": "Mabel Matiz"
+     }
+    ]
+   },
+   {
+    "yil": "80'ler",
+    "sarkilar": [
+     {
+      "ad": "Yakar Geçerim Dünyayı",
+      "sanatci": "Ajda Pekkan"
+     }
+    ]
+   }
+  ],
+  "yabanci_pop": [
+   {
+    "yil": "1982",
+    "sarkilar": [
+     {
+      "ad": "Hungry Like the Wolf",
+      "sanatci": "Duran Duran"
+     }
+    ]
+   },
+   {
+    "yil": "1983",
+    "sarkilar": [
+     {
+      "ad": "Billie Jean",
+      "sanatci": "Michael Jackson"
+     },
+     {
+      "ad": "Thriller",
+      "sanatci": "Michael Jackson"
+     },
+     {
+      "ad": "Girls Just Want to Have Fun",
+      "sanatci": "Cyndi Lauper"
+     },
+     {
+      "ad": "Sweet Dreams",
+      "sanatci": "Eurythmics"
+     },
+     {
+      "ad": "Total Eclipse of the Heart",
+      "sanatci": "Bonnie Tyler"
+     }
+    ]
+   },
+   {
+    "yil": "1984",
+    "sarkilar": [
+     {
+      "ad": "I Want to Break Free",
+      "sanatci": "Queen"
+     },
+     {
+      "ad": "Purple Rain",
+      "sanatci": "Prince"
+     },
+     {
+      "ad": "Last Christmas",
+      "sanatci": "Wham!"
+     },
+     {
+      "ad": "Material Girl",
+      "sanatci": "Madonna"
+     }
+    ]
+   },
+   {
+    "yil": "1985",
+    "sarkilar": [
+     {
+      "ad": "Take On Me",
+      "sanatci": "a-ha"
+     },
+     {
+      "ad": "You're My Heart, You're My Soul",
+      "sanatci": "Modern Talking"
+     }
+    ]
+   },
+   {
+    "yil": "1987",
+    "sarkilar": [
+     {
+      "ad": "I Wanna Dance with Somebody",
+      "sanatci": "Whitney Houston"
+     }
+    ]
+   },
+   {
+    "yil": "1989",
+    "sarkilar": [
+     {
+      "ad": "Like a Prayer",
+      "sanatci": "Madonna"
+     }
+    ]
+   },
+   {
+    "yil": "1990",
+    "sarkilar": [
+     {
+      "ad": "It Must Have Been Love",
+      "sanatci": "Roxette"
+     }
+    ]
+   },
+   {
+    "yil": "1991",
+    "sarkilar": [
+     {
+      "ad": "Smells Like Teen Spirit",
+      "sanatci": "Nirvana"
+     },
+     {
+      "ad": "Black or White",
+      "sanatci": "Michael Jackson"
+     }
+    ]
+   },
+   {
+    "yil": "1992",
+    "sarkilar": [
+     {
+      "ad": "I Will Always Love You",
+      "sanatci": "Whitney Houston"
+     },
+     {
+      "ad": "Creep",
+      "sanatci": "Radiohead"
+     }
+    ]
+   },
+   {
+    "yil": "1993",
+    "sarkilar": [
+     {
+      "ad": "The Sign",
+      "sanatci": "Ace of Base"
+     }
+    ]
+   },
+   {
+    "yil": "1995",
+    "sarkilar": [
+     {
+      "ad": "Back for Good",
+      "sanatci": "Take That"
+     },
+     {
+      "ad": "Wonderwall",
+      "sanatci": "Oasis"
+     },
+     {
+      "ad": "Fantasy",
+      "sanatci": "Mariah Carey"
+     },
+     {
+      "ad": "Gangsta's Paradise",
+      "sanatci": "Coolio"
+     }
+    ]
+   },
+   {
+    "yil": "1996",
+    "sarkilar": [
+     {
+      "ad": "Wannabe",
+      "sanatci": "Spice Girls"
+     },
+     {
+      "ad": "Ironic",
+      "sanatci": "Alanis Morissette"
+     }
+    ]
+   },
+   {
+    "yil": "1997",
+    "sarkilar": [
+     {
+      "ad": "My Heart Will Go On",
+      "sanatci": "Céline Dion"
+     },
+     {
+      "ad": "Angels",
+      "sanatci": "Robbie Williams"
+     }
+    ]
+   },
+   {
+    "yil": "1999",
+    "sarkilar": [
+     {
+      "ad": "I Want It That Way",
+      "sanatci": "Backstreet Boys"
+     },
+     {
+      "ad": "No Scrubs",
+      "sanatci": "TLC"
+     }
+    ]
+   },
+   {
+    "yil": "2000",
+    "sarkilar": [
+     {
+      "ad": "Yellow",
+      "sanatci": "Coldplay"
+     }
+    ]
+   },
+   {
+    "yil": "2003",
+    "sarkilar": [
+     {
+      "ad": "Toxic",
+      "sanatci": "Britney Spears"
+     },
+     {
+      "ad": "Crazy in Love",
+      "sanatci": "Beyoncé"
+     }
+    ]
+   },
+   {
+    "yil": "2006",
+    "sarkilar": [
+     {
+      "ad": "Rehab",
+      "sanatci": "Amy Winehouse"
+     }
+    ]
+   },
+   {
+    "yil": "2007",
+    "sarkilar": [
+     {
+      "ad": "Umbrella",
+      "sanatci": "Rihanna"
+     }
+    ]
+   },
+   {
+    "yil": "2009",
+    "sarkilar": [
+     {
+      "ad": "Bad Romance",
+      "sanatci": "Lady Gaga"
+     }
+    ]
+   },
+   {
+    "yil": "2010",
+    "sarkilar": [
+     {
+      "ad": "Rolling in the Deep",
+      "sanatci": "Adele"
+     }
+    ]
+   },
+   {
+    "yil": "2011",
+    "sarkilar": [
+     {
+      "ad": "Somebody That I Used to Know",
+      "sanatci": "Gotye"
+     }
+    ]
+   },
+   {
+    "yil": "2013",
+    "sarkilar": [
+     {
+      "ad": "Get Lucky",
+      "sanatci": "Daft Punk"
+     }
+    ]
+   },
+   {
+    "yil": "2014",
+    "sarkilar": [
+     {
+      "ad": "Uptown Funk",
+      "sanatci": "Bruno Mars"
+     },
+     {
+      "ad": "Shake It Off",
+      "sanatci": "Taylor Swift"
+     }
+    ]
+   },
+   {
+    "yil": "2015",
+    "sarkilar": [
+     {
+      "ad": "Hello",
+      "sanatci": "Adele"
+     }
+    ]
+   },
+   {
+    "yil": "2017",
+    "sarkilar": [
+     {
+      "ad": "Shape of You",
+      "sanatci": "Ed Sheeran"
+     }
+    ]
+   },
+   {
+    "yil": "2019",
+    "sarkilar": [
+     {
+      "ad": "Blinding Lights",
+      "sanatci": "The Weeknd"
+     },
+     {
+      "ad": "bad guy",
+      "sanatci": "Billie Eilish"
+     }
+    ]
+   },
+   {
+    "yil": "2020",
+    "sarkilar": [
+     {
+      "ad": "Levitating",
+      "sanatci": "Dua Lipa"
+     }
+    ]
+   },
+   {
+    "yil": "2021",
+    "sarkilar": [
+     {
+      "ad": "drivers license",
+      "sanatci": "Olivia Rodrigo"
+     }
+    ]
+   },
+   {
+    "yil": "2022",
+    "sarkilar": [
+     {
+      "ad": "As It Was",
+      "sanatci": "Harry Styles"
+     }
+    ]
+   }
+  ],
+  "kafa_sarkilar": [
+   {
+    "tur": "Türk Sanat Müziği",
+    "sarkilar": [
+     {
+      "ad": "Mehtaba Bak",
+      "sanatci": "Zeki Müren"
+     },
+     {
+      "ad": "Elimde Değil",
+      "sanatci": "Zeki Müren"
+     }
+    ]
+   },
+   {
+    "tur": "45'lik",
+    "sarkilar": [
+     {
+      "ad": "Batsın Bu Dünya",
+      "sanatci": "Orhan Gencebay",
+      "yil": "1975"
+     },
+     {
+      "ad": "Resimdeki Gözyaşları",
+      "sanatci": "Cem Karaca"
+     },
+     {
+      "ad": "Gesi Bağları",
+      "sanatci": "Selda Bağcan"
+     },
+     {
+      "ad": "Nilüfer",
+      "sanatci": "Müslüm Gürses"
+     },
+     {
+      "ad": "Gönül Dağı",
+      "sanatci": "Neşet Ertaş"
+     },
+     {
+      "ad": "Huzurum Kalmadı",
+      "sanatci": "Ferdi Tayfur"
+     },
+     {
+      "ad": "Cemalim",
+      "sanatci": "Erkin Koray"
+     }
+    ]
+   },
+   {
+    "tur": "Taş Plak",
+    "sarkilar": [
+     {
+      "ad": "Telgrafın Tellerine",
+      "sanatci": "Safiye Ayla"
+     },
+     {
+      "ad": "Gamzedeyim Deva Bulmam",
+      "sanatci": "Hamiyet Yüceses"
+     }
+    ]
+   }
+  ],
+  "dinlemelik": [
+   {
+    "tur": "Afro",
+    "sarkilar": [
+     {
+      "ad": "Water No Get Enemy",
+      "sanatci": "Fela Kuti"
+     },
+     {
+      "ad": "Savane",
+      "sanatci": "Ali Farka Touré"
+     },
+     {
+      "ad": "Pata Pata",
+      "sanatci": "Miriam Makeba"
+     },
+     {
+      "ad": "Amassakoul",
+      "sanatci": "Tinariwen"
+     },
+     {
+      "ad": "Zombie",
+      "sanatci": "Fela Kuti",
+      "yil": "1976"
+     },
+     {
+      "ad": "Grazing in the Grass",
+      "sanatci": "Hugh Masekela",
+      "yil": "1968"
+     },
+     {
+      "ad": "Soul Makossa",
+      "sanatci": "Manu Dibango",
+      "yil": "1972"
+     },
+     {
+      "ad": "Sodade",
+      "sanatci": "Cesária Évora",
+      "yil": "1992"
+     },
+     {
+      "ad": "7 Seconds",
+      "sanatci": "Youssou N'Dour",
+      "yil": "1994"
+     }
+    ]
+   },
+   {
+    "tur": "Blues",
+    "sarkilar": [
+     {
+      "ad": "The Thrill Is Gone",
+      "sanatci": "B.B. King"
+     },
+     {
+      "ad": "Hoochie Coochie Man",
+      "sanatci": "Muddy Waters"
+     },
+     {
+      "ad": "Cross Road Blues",
+      "sanatci": "Robert Johnson"
+     },
+     {
+      "ad": "Hound Dog",
+      "sanatci": "Big Mama Thornton",
+      "yil": "1953"
+     },
+     {
+      "ad": "Smokestack Lightning",
+      "sanatci": "Howlin' Wolf",
+      "yil": "1956"
+     },
+     {
+      "ad": "Boom Boom",
+      "sanatci": "John Lee Hooker",
+      "yil": "1962"
+     },
+     {
+      "ad": "Born Under a Bad Sign",
+      "sanatci": "Albert King",
+      "yil": "1967"
+     },
+     {
+      "ad": "Pride and Joy",
+      "sanatci": "Stevie Ray Vaughan",
+      "yil": "1983"
+     }
+    ]
+   },
+   {
+    "tur": "Blues-Caz",
+    "sarkilar": [
+     {
+      "ad": "Georgia on My Mind",
+      "sanatci": "Ray Charles"
+     },
+     {
+      "ad": "Strange Fruit",
+      "sanatci": "Billie Holiday"
+     },
+     {
+      "ad": "Feeling Good",
+      "sanatci": "Nina Simone"
+     },
+     {
+      "ad": "St. Louis Blues",
+      "sanatci": "Bessie Smith",
+      "yil": "1925"
+     },
+     {
+      "ad": "At Last",
+      "sanatci": "Etta James",
+      "yil": "1960"
+     },
+     {
+      "ad": "I Put a Spell on You",
+      "sanatci": "Nina Simone",
+      "yil": "1965"
+     },
+     {
+      "ad": "The Look of Love",
+      "sanatci": "Diana Krall",
+      "yil": "2001"
+     },
+     {
+      "ad": "Don't Know Why",
+      "sanatci": "Norah Jones",
+      "yil": "2002"
+     }
+    ]
+   },
+   {
+    "tur": "Caz",
+    "sarkilar": [
+     {
+      "ad": "So What",
+      "sanatci": "Miles Davis"
+     },
+     {
+      "ad": "Take Five",
+      "sanatci": "Dave Brubeck"
+     },
+     {
+      "ad": "Giant Steps",
+      "sanatci": "John Coltrane"
+     },
+     {
+      "ad": "What a Wonderful World",
+      "sanatci": "Louis Armstrong"
+     },
+     {
+      "ad": "Take the \"A\" Train",
+      "sanatci": "Duke Ellington",
+      "yil": "1941"
+     },
+     {
+      "ad": "'Round Midnight",
+      "sanatci": "Thelonious Monk",
+      "yil": "1944"
+     },
+     {
+      "ad": "Ornithology",
+      "sanatci": "Charlie Parker",
+      "yil": "1946"
+     },
+     {
+      "ad": "A Night in Tunisia",
+      "sanatci": "Dizzy Gillespie",
+      "yil": "1946"
+     },
+     {
+      "ad": "My Funny Valentine",
+      "sanatci": "Chet Baker",
+      "yil": "1954"
+     },
+     {
+      "ad": "Summertime",
+      "sanatci": "Ella Fitzgerald",
+      "yil": "1957"
+     },
+     {
+      "ad": "Blue in Green",
+      "sanatci": "Miles Davis",
+      "yil": "1959"
+     },
+     {
+      "ad": "Waltz for Debby",
+      "sanatci": "Bill Evans",
+      "yil": "1961"
+     },
+     {
+      "ad": "Cantaloupe Island",
+      "sanatci": "Herbie Hancock",
+      "yil": "1964"
+     },
+     {
+      "ad": "The Girl from Ipanema",
+      "sanatci": "Stan Getz",
+      "yil": "1964"
+     },
+     {
+      "ad": "A Love Supreme",
+      "sanatci": "John Coltrane",
+      "yil": "1965"
+     }
+    ]
+   }
+  ]
+ }
+}

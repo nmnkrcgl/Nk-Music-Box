@@ -1,0 +1,7 @@
+NK MUSIC BOX - APK DERLEME
+1) Android Studio'yu aç: File > Open > bu klasör (MuzikDolabi). Gradle eşitlemesini bekle.
+2) BagimsizVeriYonetici.kt içindeki CANLI_JSON_URL adresini kendi sunucundakiyle değiştir.
+3) Build > Build APK(s). Dosya: app/build/outputs/apk/debug/app-debug.apk
+4) APK'yı telefona gönder, "bilinmeyen kaynaklardan yükle" iznini ver, kur.
+Liste güncelleme: sunucudaki muzik_dolabi.json'da "versiyon" sayısını artır; uygulama bir sonraki açılışta yeni listeyi kullanır.
+Şarkıları düzenlemek için app/src/main/assets/muzik_dolabi.json dosyasını değiştir (APK içi başlangıç listesi).

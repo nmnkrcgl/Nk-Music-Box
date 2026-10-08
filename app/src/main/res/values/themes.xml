@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.MuzikDolabi" parent="@android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:statusBarColor">#2A1740</item>
+        <item name="android:navigationBarColor">#221B29</item>
+    </style>
+</resources>
