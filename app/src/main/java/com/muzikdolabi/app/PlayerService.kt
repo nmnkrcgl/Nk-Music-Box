@@ -6,16 +6,14 @@ import android.net.Uri
 
 class PlayerService(private val context: Context) {
 
-    // Şarkıya tıklandığında duraksamadan doğrudan çalar/yönlendirir
     fun playSong(artist: String, title: String, spotifyUrl: String?, youtubeUrl: String?) {
         val query = Uri.encode("$artist $title")
         
-        if (!spotifyUrl.isNull_or_Empty()) {
+        if (!spotifyUrl.isNullOrEmpty()) {
             openApp(spotifyUrl)
-        } else if (!youtubeUrl.isNull_or_Empty()) {
+        } else if (!youtubeUrl.isNullOrEmpty()) {
             openApp(youtubeUrl)
         } else {
-            // Varsayılan olarak Spotify veya YouTube arama bağlantısına doğrudan yönlendirir
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse("spotify:search:$query"))
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             try {
