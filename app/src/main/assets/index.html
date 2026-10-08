@@ -5,31 +5,167 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NK Music Box</title>
   <style>
-    body { background-color: #121212; color: #fff; font-family: sans-serif; padding: 15px; }
-    .song-card { background: #1e1e1e; padding: 12px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-    .song-title { font-weight: bold; font-size: 16px; }
-    .song-artist { font-size: 13px; color: #aaa; }
-    .btn-dinle { background: linear-gradient(135deg, #9D4EDD, #FFB703); color: #121212; font-weight: bold; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; }
-    .btn-spotify, .btn-youtube { background: #282828; color: #fff; border: none; padding: 8px 12px; border-radius: 6px; margin-left: 4px; cursor: pointer; }
+    :root {
+      --bg: #121216;
+      --card: #1e1e24;
+      --accent: #9D4EDD;
+      --accent-gold: #FFB703;
+      --text: #ffffff;
+      --subtext: #a0a0ab;
+      --border: #2a2a35;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 16px; padding-bottom: 80px; }
+    
+    .header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .header-logo { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, #7B2CBF, #9D4EDD); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .header h1 { font-size: 22px; font-weight: 800; font-family: Georgia, serif; }
+    .subtitle { font-size: 13px; color: var(--subtext); margin-bottom: 16px; }
+
+    .group-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px; }
+    .group-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; cursor: pointer; transition: 0.2s; }
+    .group-card.active { border-color: var(--accent-gold); background: #25232d; }
+    .group-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .group-desc { font-size: 11px; color: var(--subtext); }
+
+    .subcategories { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 16px; }
+    .sub-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 6px 14px; border-radius: 20px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+    .sub-btn.active { background: var(--accent-gold); color: #000; font-weight: bold; border-color: var(--accent-gold); }
+
+    .search-box { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; color: var(--text); font-size: 14px; margin-bottom: 16px; outline: none; }
+
+    .song-list { display: flex; flex-direction: column; gap: 10px; }
+    .song-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .song-info { display: flex; flex-direction: column; gap: 2px; }
+    .song-title { font-weight: 700; font-size: 15px; }
+    .song-artist { font-size: 12px; color: var(--subtext); }
+
+    .song-actions { display: flex; align-items: center; gap: 6px; }
+    button, input, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+
+    /* ▶ DİNLE BUTONU STİLİ */
+    .btn-dinle {
+      background: linear-gradient(135deg, #9D4EDD, #FFB703);
+      color: #121212;
+      font-weight: bold;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-dinle:hover { opacity: 0.9; }
+
+    .btn-sec { background: #2a2a35; border: none; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; }
+
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: #16161c; border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 10px 0; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; font-size: 11px; color: var(--subtext); cursor: pointer; }
+    .nav-item.active { color: var(--accent-gold); }
+    .nav-icon { font-size: 18px; margin-bottom: 2px; }
   </style>
 </head>
 <body>
 
-  <h2>NK Music Box</h2>
+  <div class="header">
+    <div class="header-logo">📻</div>
+    <h1>NK music box</h1>
+  </div>
+  <p class="subtitle">Senin 4 grubun, senin listelerin. Şarkıya dokun, anında dinle.</p>
 
-  <div id="song-list">
-    <!-- Örnek Şarkı Kartı -->
+  <!-- 4 Ana Grup -->
+  <div class="group-grid">
+    <div class="group-card" onclick="selectGroup(1)">
+      <div class="group-title">1. Yerli Pop</div>
+      <div class="group-desc">80'ler · 90'lar · günümüz</div>
+    </div>
+    <div class="group-card" onclick="selectGroup(2)">
+      <div class="group-title">2. Yabancı Pop</div>
+      <div class="group-desc">80'ler · 90'lar · günümüz</div>
+    </div>
+    <div class="group-card active" onclick="selectGroup(3)">
+      <div class="group-title">3. Kafa Şarkılar</div>
+      <div class="group-desc">Sanat müziği · 45'likler · taş plak</div>
+    </div>
+    <div class="group-card" onclick="selectGroup(4)">
+      <div class="group-title">4. Dinlemelik</div>
+      <div class="group-desc">Afro · blues · caz</div>
+    </div>
+  </div>
+
+  <!-- Alt Kategoriler -->
+  <div class="subcategories">
+    <button class="sub-btn active">Hepsi</button>
+    <button class="sub-btn">Türk Sanat Müziği</button>
+    <button class="sub-btn">45'lik</button>
+    <button class="sub-btn">Taş Plak</button>
+  </div>
+
+  <!-- Arama Kutusu -->
+  <input type="text" class="search-box" placeholder="Tüm gruplarda ara: sanatçı veya şarkı">
+
+  <!-- Şarkı Listesi -->
+  <div class="song-list">
+    
     <div class="song-card">
-      <div>
+      <div class="song-info">
         <div class="song-title">Mehtaba Bak</div>
-        <div class="song-artist">Zeki Müren</div>
+        <div class="song-artist">Zeki Müren · Türk Sanat Müziği</div>
       </div>
-      <div>
+      <div class="song-actions">
         <button class="btn-dinle" onclick="sarkiCal('Zeki Müren', 'Mehtaba Bak')">▶ DİNLE</button>
-        <button class="btn-spotify" onclick="sarkiCal('Zeki Müren', 'Mehtaba Bak')">Spotify</button>
-        <button class="btn-youtube" onclick="sarkiCal('Zeki Müren', 'Mehtaba Bak')">YouTube</button>
+        <button class="btn-sec">Spotify</button>
+        <button class="btn-sec">YouTube</button>
       </div>
     </div>
+
+    <div class="song-card">
+      <div class="song-info">
+        <div class="song-title">Elimde Değil</div>
+        <div class="song-artist">Zeki Müren · Türk Sanat Müziği</div>
+      </div>
+      <div class="song-actions">
+        <button class="btn-dinle" onclick="sarkiCal('Zeki Müren', 'Elimde Değil')">▶ DİNLE</button>
+        <button class="btn-sec">Spotify</button>
+        <button class="btn-sec">YouTube</button>
+      </div>
+    </div>
+
+    <div class="song-card">
+      <div class="song-info">
+        <div class="song-title">Batsın Bu Dünya</div>
+        <div class="song-artist">Orhan Gencebay · 1975 · 45'lik</div>
+      </div>
+      <div class="song-actions">
+        <button class="btn-dinle" onclick="sarkiCal('Orhan Gencebay', 'Batsın Bu Dünya')">▶ DİNLE</button>
+        <button class="btn-sec">Spotify</button>
+        <button class="btn-sec">YouTube</button>
+      </div>
+    </div>
+
+    <div class="song-card">
+      <div class="song-info">
+        <div class="song-title">Resimdeki Gözyaşları</div>
+        <div class="song-artist">Cem Karaca · 1968 · 45'lik</div>
+      </div>
+      <div class="song-actions">
+        <button class="btn-dinle" onclick="sarkiCal('Cem Karaca', 'Resimdeki Gözyaşları')">▶ DİNLE</button>
+        <button class="btn-sec">Spotify</button>
+        <button class="btn-sec">YouTube</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Alt Menü Barı -->
+  <div class="bottom-nav">
+    <div class="nav-item active"><span class="nav-icon">🔍</span>Keşfet</div>
+    <div class="nav-item"><span class="nav-icon">📅</span>Yıllar</div>
+    <div class="nav-item"><span class="nav-icon">💿</span>Kütüphane</div>
+    <div class="nav-item"><span class="nav-icon">✨</span>Öneri</div>
   </div>
 
   <script>
