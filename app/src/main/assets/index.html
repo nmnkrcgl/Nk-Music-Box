@@ -19,19 +19,23 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background-color: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 16px; padding-bottom: 80px; }
     
-    .header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+    .header-left { display: flex; align-items: center; gap: 12px; }
     .header-logo { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, #7B2CBF, #9D4EDD); display: flex; align-items: center; justify-content: center; font-size: 20px; }
     .header h1 { font-size: 22px; font-weight: 800; font-family: Georgia, serif; }
     .subtitle { font-size: 13px; color: var(--subtext); margin-bottom: 16px; }
 
+    /* Menü Kartları (5 Kategori) */
     .group-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 16px; }
     .group-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; cursor: pointer; transition: 0.2s; }
     .group-card.active { border-color: var(--accent-gold); background: #25232d; }
-    .group-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+    .group-card.my-list-card { border-color: var(--accent); background: #1c1528; grid-column: span 2; }
+    .group-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; display: flex; justify-content: space-between; }
     .group-desc { font-size: 11px; color: var(--subtext); }
 
     .search-box { width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; color: var(--text); font-size: 14px; margin-bottom: 16px; outline: none; }
 
+    /* Şarkı Kartı */
     .song-list { display: flex; flex-direction: column; gap: 10px; }
     .song-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px; display: flex; justify-content: space-between; align-items: center; }
     .song-info { display: flex; flex-direction: column; gap: 2px; }
@@ -41,43 +45,40 @@
 
     .song-actions { display: flex; align-items: center; gap: 6px; }
     
-    .btn-spotify {
-      background: var(--spotify-green);
-      color: #000000;
-      font-weight: bold;
+    .btn-action {
       border: none;
-      padding: 8px 12px;
+      padding: 8px 10px;
       border-radius: 8px;
       cursor: pointer;
       font-size: 12px;
+      font-weight: bold;
       display: flex;
       align-items: center;
       gap: 4px;
     }
-    .btn-youtube {
-      background: #2a2a35;
-      color: #ffffff;
-      border: 1px solid var(--border);
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .btn-youtube:hover { border-color: var(--youtube-red); }
+    .btn-fav { background: #2a2a35; color: var(--accent-gold); border: 1px solid var(--border); }
+    .btn-fav.active { background: var(--accent-gold); color: #000; }
+    .btn-youtube { background: #cc1818; color: #ffffff; }
+    .btn-spotify { background: var(--spotify-green); color: #000; }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <div class="header-logo">📻</div>
-    <h1>NK music box</h1>
+    <div class="header-left">
+      <div class="header-logo">📻</div>
+      <h1>NK music box</h1>
+    </div>
   </div>
-  <p class="subtitle">Senin 4 grubun, senin listelerin. Şarkıya dokun, anında dinle.</p>
+  <p class="subtitle">Kendi listeni oluştur, şarkılarını seç ve anında dinle.</p>
 
   <div class="group-grid">
+    <!-- Özel Liste / Favorilerim Menüsü -->
+    <div class="group-card my-list-card" onclick="selectCategory('favorilerim', this)">
+      <div class="group-title">⭐ Benim Özel Listem <span id="favCount">(0)</span></div>
+      <div class="group-desc">Kaydettiğin özel şarkı listen</div>
+    </div>
+
     <div class="group-card active" onclick="selectCategory('yerli_pop', this)">
       <div class="group-title">1. Yerli Pop</div>
       <div class="group-desc">80'ler · 90'lar · günümüz</div>
@@ -88,7 +89,7 @@
     </div>
     <div class="group-card" onclick="selectCategory('kafa_sarkilar', this)">
       <div class="group-title">3. Kafa Şarkılar</div>
-      <div class="group-desc">Sanat müziği · 45'likler · taş plak</div>
+      <div class="group-desc">Sanat müziği · 45'likler</div>
     </div>
     <div class="group-card" onclick="selectCategory('dinlemelik', this)">
       <div class="group-title">4. Dinlemelik</div>
@@ -96,7 +97,7 @@
     </div>
   </div>
 
-  <input type="text" id="searchInput" class="search-box" placeholder="Tüm gruplarda ara: sanatçı veya şarkı" oninput="searchSongs()">
+  <input type="text" id="searchInput" class="search-box" placeholder="Aramak istediğin şarkı veya sanatçı..." oninput="searchSongs()">
 
   <div class="song-list" id="songContainer">
     <div style="text-align:center; padding: 20px; color: #aaa;">Listeler yükleniyor...</div>
@@ -105,6 +106,9 @@
   <script>
     let jsonData = null;
     let currentKey = 'yerli_pop';
+    let favorites = JSON.parse(localStorage.getItem('my_music_favorites') || '[]');
+
+    updateFavCount();
 
     fetch('muzik_dolabi.json')
       .then(response => response.json())
@@ -117,11 +121,20 @@
         document.getElementById('songContainer').innerHTML = '<div style="color:red; text-align:center;">muzik_dolabi.json yüklenemedi!</div>';
       });
 
+    function updateFavCount() {
+      document.getElementById('favCount').innerText = `(${favorites.length})`;
+    }
+
     function selectCategory(key, el) {
       currentKey = key;
       document.querySelectorAll(".group-card").forEach(c => c.classList.remove("active"));
       if(el) el.classList.add("active");
-      renderCategory(key);
+      
+      if (key === 'favorilerim') {
+        renderSongs(favorites);
+      } else {
+        renderCategory(key);
+      }
     }
 
     function renderCategory(key) {
@@ -152,12 +165,13 @@
       const container = document.getElementById("songContainer");
       container.innerHTML = "";
 
-      if (songs.length === 0) {
-        container.innerHTML = '<div style="text-align:center; padding:20px; color:#aaa;">Sonuç bulunamadı.</div>';
+      if (!songs || songs.length === 0) {
+        container.innerHTML = '<div style="text-align:center; padding:20px; color:#aaa;">Listenizde henüz şarkı bulunmuyor. Şarkıların yanındaki ⭐ butonuna basarak ekleyebilirsiniz.</div>';
         return;
       }
 
       songs.forEach(song => {
+        const isFav = favorites.some(f => f.ad === song.ad && f.sanatci === song.sanatci);
         const card = document.createElement("div");
         card.className = "song-card";
         card.innerHTML = `
@@ -166,18 +180,37 @@
             <div class="song-artist">${song.sanatci} ${song.yil ? `<span class="song-year">(${song.yil})</span>` : ''}</div>
           </div>
           <div class="song-actions">
-            <button class="btn-spotify" onclick="openSpotify('${song.sanatci}', '${song.ad}')">🎧 Spotify</button>
-            <button class="btn-youtube" onclick="openYouTube('${song.sanatci}', '${song.ad}')">▶ YouTube</button>
+            <button class="btn-action btn-fav ${isFav ? 'active' : ''}" onclick="toggleFavorite('${song.sanatci.replace(/'/g, "\\'")}', '${song.ad.replace(/'/g, "\\'")}', '${song.yil}')">
+              ${isFav ? '★ Eklendi' : '☆ Ekle'}
+            </button>
+            <button class="btn-action btn-youtube" onclick="openYouTube('${song.sanatci.replace(/'/g, "\\'")}', '${song.ad.replace(/'/g, "\\'")}')">▶ Dinle</button>
           </div>
         `;
         container.appendChild(card);
       });
     }
 
+    function toggleFavorite(sanatci, ad, yil) {
+      const index = favorites.findIndex(f => f.ad === ad && f.sanatci === sanatci);
+      if (index > -1) {
+        favorites.splice(index, 1);
+      } else {
+        favorites.push({ ad, sanatci, yil });
+      }
+      localStorage.setItem('my_music_favorites', JSON.stringify(favorites));
+      updateFavCount();
+
+      if (currentKey === 'favorilerim') {
+        renderSongs(favorites);
+      } else {
+        renderCategory(currentKey);
+      }
+    }
+
     function searchSongs() {
       const q = document.getElementById("searchInput").value.toLowerCase();
       if (!q) {
-        renderCategory(currentKey);
+        selectCategory(currentKey);
         return;
       }
 
@@ -199,18 +232,9 @@
       renderSongs(results);
     }
 
-    // Spotify Web Arama Yönlendirmesi (Spotify Uygulaması Olmasa da Çalışır)
-    function openSpotify(sanatci, sarki) {
-      const query = encodeURIComponent(sanatci + " " + sarki);
-      const spotifyWebUrl = "https://open.spotify.com/search/" + query;
-      window.open(spotifyWebUrl, "_blank");
-    }
-
-    // YouTube Arama Yönlendirmesi
     function openYouTube(sanatci, sarki) {
       const query = encodeURIComponent(sanatci + " " + sarki);
-      const youtubeWebUrl = "https://www.youtube.com/results?search_query=" + query;
-      window.open(youtubeWebUrl, "_blank");
+      window.location.href = "https://www.youtube.com/results?search_query=" + query;
     }
   </script>
 </body>
